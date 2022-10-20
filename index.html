@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+ <head>
+  <title>Url Shortener</title> 
+  <meta charset="UTF-8"> 
+  <meta content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5" name="viewport"> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"> 
+    <style>
+:root{
+--head-color: #262d3d ;
+--body-color: #48525c ;
+--body-color-alt: #767676 ;
+--body-bg-color: #F8F9FA ;
+--body-bg-color-sec: #fafafc ;
+--link-color: #204ecf ;
+--link-bg-color: #204ecf ;
+--icon-color: #48525c ;
+--icon-alt-color: #767676 ;
+--icon-link-color: #204ecf ;
+--header-text: #262d3d ;
+--header-text-alt: #767676 ;
+--header-bg-color: #fefefe ;
+--header-icon: #262d3d ;
+--header-icon-alt: #48525c ;
+--header-icon-sec: #767676 ;
+--header-icon-link: #204ecf ;
+--header-height: 60px ;
+--nav-text: #262d3d ;
+--nav-text-alt: #48525c ;
+--foot-text: #48525c ;
+--foot-text-alt: #767676 ;
+--foot-bg: #fefefe ;
+--foot-icon: #48525c ;
+--foot-icon-alt: #767676 ;
+--highlight-bg: #f6f6f6 ;
+--highlight-color: #2f3337 ;
+--highlight-orange: #b75501 ;
+--highlight-blue: #015692 ;
+--highlight-green: #54790d ;
+--highlight-red: #f15a5a ;
+--highlight-comment: #656e77 ;
+--font-head: 'Noto Sans', sans-serif ;
+--font-body: 'Noto Sans', sans-serif ;
+--font-body-alt: 'Merriweather', serif ;
+--font-code: 'Fira Mono', monospace ;
+--item-title-size: 1.1rem ;
+--item-title-size-2: .9rem ;
+--dark-text: #fefefe ;
+--dark-text-alt: #989b9f ;
+--dark-link: #005af0 ;
+--dark-bg: #1e1e1e ;
+--dark-bg-alt: #2d2d30 ;
+--dark-bg-sec: #252526 ;
+--page-1: #fefefe ;
+--page-2: #F8F9FA ;
+--page-3: #fefefe ;
+--page-4: #F8F9FA ;
+--page-5: #fefefe ;
+--page-6: #F8F9FA ;
+--page-7: #f1f1f0 ;
+--page-8: #F8F9FA ;
+--page-9: #fefefe ;
+--page-10: #F8F9FA ;
+}
+/* Font Heading and Body */
+@font-face{font-family: 'Noto Sans';font-style: italic;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/notosans/v11/o-0OIpQlx3QUlC5A4PNr4ARMQ_m87A.woff2) format('woff2'), url(https://fonts.gstatic.com/s/notosans/v11/o-0OIpQlx3QUlC5A4PNr4DRG.woff) format('woff')}
+@font-face{font-family: 'Noto Sans';font-style: italic;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/notosans/v11/o-0TIpQlx3QUlC5A4PNr4Az5ZuyDzW0.woff2) format('woff2'), url(https://fonts.gstatic.com/s/notosans/v11/o-0TIpQlx3QUlC5A4PNr4Az5ZtyH.woff) format('woff')}
+@font-face{font-family: 'Noto Sans';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/notosans/v11/o-0IIpQlx3QUlC5A4PNr5TRA.woff2) format('woff2'), url(https://fonts.gstatic.com/s/notosans/v11/o-0IIpQlx3QUlC5A4PNb4Q.woff) format('woff')}
+@font-face{font-family: 'Noto Sans';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/notosans/v11/o-0NIpQlx3QUlC5A4PNjXhFVZNyB.woff2) format('woff2'), url(https://fonts.gstatic.com/s/notosans/v11/o-0NIpQlx3QUlC5A4PNjXhFlYA.woff) format('woff')}
+/* Font Body Alternative */
+@font-face{font-family: 'Merriweather'; font-style: italic; font-weight: 300; font-display: swap; src: local('Merriweather-LightItalic'), url(https://fonts.gstatic.com/s/merriweather/v22/u-4l0qyriQwlOrhSvowK_l5-eR7lXff4jvw.woff2) format('woff2'), url(https://fonts.gstatic.com/s/merriweather/v22/u-4l0qyriQwlOrhSvowK_l5-eR7lXcf8.woff) format('woff')}
+@font-face{font-family: 'Merriweather'; font-style: italic; font-weight: 700; font-display: swap; src: url(https://fonts.gstatic.com/s/merriweather/v22/u-4l0qyriQwlOrhSvowK_l5-eR7NWPf4jvw.woff2) format('woff2'), url(https://fonts.gstatic.com/s/merriweather/v22/u-4l0qyriQwlOrhSvowK_l5-eR71Wsf8.woff) format('woff')}
+@font-face{font-family: 'Merriweather'; font-style: italic; font-weight: 900; font-display: swap; src: url(https://fonts.gstatic.com/s/merriweather/v22/u-4l0qyriQwlOrhSvowK_l5-eR7NWPf4jvw.woff2) format('woff2'), url(https://fonts.gstatic.com/s/merriweather/v22/u-4l0qyriQwlOrhSvowK_l5-eR7NWMf8.woff) format('woff')}
+@font-face{font-family: 'Merriweather'; font-style: normal; font-weight: 300; font-display: swap; src: url(https://fonts.gstatic.com/s/merriweather/v22/u-4n0qyriQwlOrhSvowK_l521wRZWMf6.woff2) format('woff2'), url(https://fonts.gstatic.com/s/merriweather/v22/u-4n0qyriQwlOrhSvowK_l521wRpXA.woff) format('woff')}
+@font-face{font-family: 'Merriweather'; font-style: normal; font-weight: 700; font-display: swap; src: url(https://fonts.gstatic.com/s/merriweather/v22/u-4n0qyriQwlOrhSvowK_l52xwNZWMf6.woff2) format('woff2'), url(https://fonts.gstatic.com/s/merriweather/v22/u-4n0qyriQwlOrhSvowK_l52xwNpXA.woff) format('woff')}
+@font-face{font-family: 'Merriweather'; font-style: normal; font-weight: 900; font-display: swap; src: url(https://fonts.gstatic.com/s/merriweather/v22/u-4n0qyriQwlOrhSvowK_l52_wFZWMf6.woff2) format('woff2'), url(https://fonts.gstatic.com/s/merriweather/v22/u-4n0qyriQwlOrhSvowK_l52_wFpXA.woff) format('woff')}
+/* Source Code Font */
+@font-face {font-family: 'Fira Mono';font-style: normal;font-weight: 400;font-display: swap;src: local('Fira Mono Regular'), local('FiraMono-Regular'), url(https://fonts.gstatic.com/s/firamono/v9/N0bX2SlFPv1weGeLZDtQIg.woff) format('woff'), url(https://fonts.gstatic.com/s/firamono/v9/N0bX2SlFPv1weGeLZDtgJv7S.woff2) format('woff2');}
+/* Standar CSS */
+*,:after,:before{-webkit-box-sizing:border-box;box-sizing:border-box}
+h1, h2, h3, h4, h5, h6{margin:0;font-weight:700;font-family:var(--font-head);color:var(--head-color)} h1{font-size:1.8rem} h2{font-size:1.7rem} h3{font-size:1.5rem} h4{font-size:1.3rem} h5{font-size:1.2rem} h6{font-size:1.1rem}
+a{color:var(--link-color);text-decoration:none} a:hover{opacity:.7;transition:opacity .15s;-webkit-transition:opacity .15s}
+table{border-spacing:0} iframe{max-width:100%;border:0;margin-left:auto;margin-right:auto} input,button,select,textarea{font:inherit;font-size:100%;color:inherit;line-height:normal;vertical-align:baseline} img{display:block;position:relative;max-width:100%;height:auto}
+svg{width:22px;height:22px;fill:var(--icon-color)}
+svg.line, svg .line{fill:none!important;stroke:var(--icon-color);stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+.hidden, .replaced{display:none} .invisible{visibility:hidden} .clear{width:100%;display:block;margin:0;padding:0;float:none;clear:both}
+.fullClose{display:block;position:fixed;top:0;left:0;width:100%;height:100%;z-index:2;-webkit-transition:all .1s ease-in;transition:all .1s ease-in;background:transparent;opacity:0;visibility:hidden}
+.free:after, .new:after{content:'Free!';color:var(--link-color);font-size:85%;font-weight:400;margin-left:5px} .new:after{content:'New!'}
+/* Main Element */
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{position:relative;margin:0;padding:var(--header-height) 0 0!important;width:100%;font-family:var(--font-body);font-size:14px;color:var(--body-color);background-color:var(--body-bg-color);-webkit-font-smoothing: antialiased; word-break: break-word;}
+.sectionInner{margin:0 auto;max-width:1360px;padding-left:70px;padding-right:70px}
+.widget .title{display:flex;align-items:center;justify-content:space-between;margin:0 0 25px;font-size:15px}
+.widget .imgThumb{display:block;position:absolute;top:50%;left:50%;max-width:none;max-height:100%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}
+footer .widget ul{list-style:none;margin:0;padding:0}
+
+.panel-primary{background:#fff;text-align:center;display:block;overflow:hidden;width:100%;max-width:80%;padding:0 0 25px 0;border-radius:5px;margin:15% auto;box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24)}.panel-body{position:relative;margin:0 25px}.panel-heading h2{margin:0 auto 25px auto;text-align: center;  background:#182C61;color:#fff;font-weight:bold;padding:15px;font-size:25px}.panel-body input{background:rgba(0,0,0,0.04);width:100%;padding:15px;border-radius:5px;border:1px solid transparent;font-size:16px;color:#000;outline:none;text-indent:60px;transition:all .3s}.panel-body input:focus{background:#fff;color:#000;border-color:#182C61;outline:none;box-shadow:0 0 5px rgba(0,0,0,0.1)}.panel-body .input-group-btn{position:absolute;top:0;right:0}.panel-body button{border-radius:0 5px 5px 0;background:#182C61;color:#fff;border:0;padding:17px 52px;font-weight:500;outline:none;transition:all .3s}.panel-body button:hover,.panel-body button:focus{background:#182C61;outline:none}#exampleModal{margin:20px auto 0 auto}#exampleModal button{background:#182C61;border-radius:5px;font-size:14px;padding:14px 32px}#exampleModal button:hover,#exampleModal button:focus{background:#182C61;border-radius:5px;font-size:14px}#exampleModal input{background:rgba(0,0,0,0.05);text-indent:0}#exampleModal input:hover,#exampleModal input:focus{background:#182C61;border-color:transparent;box-shadow:none}#generateloading{margin:20px auto 0 auto;font-size:20px;color:#182C61;font-weight:normal}
+.panel-body:before{content:'\279C';background:rgba(0,0,0,0.05);position:absolute;left:0;top:0;color:#888;padding:17px 20px;border-radius:5px 0 0 5px;border-right:1px solid transparent;transition:all .6s}.panel-body:focus-within:before{content:'\279C';background:#182C61;color:#fff}.bt-success{display:inline-flex;align-items:center;margin:15px 15px;padding:10px 20px;outline:0;border:0;border-radius:2px;color:#fefefe;background-color:#182C61;font-size:14px;white-space:nowrap;overflow:hidden;max-width:100%;line-height:2em}.bt-success:hover{color:#182C61;background-color:transparent;border:1px solid #182C61}.hidden,.bt-success.hidden{display:none}.wcSafeClose{display:inline-flex;align-items:center;margin:15px auto -15px;padding:5px 15px;outline:0;border:0;border-radius:2px;color:#fefefe;background-color:#182C61;font-size:14px;white-space:nowrap;overflow:hidden;max-width:100%;line-height:2em}.copytoclipboard{margin:10px auto 5px}
+#generateloading svg{width:22px;height:22px;fill:#182C61}
+.btn-primary svg{fill:none;stroke:#fff;stroke-width:1.5;width:22px;height:22px;vertical-align:-5px;margin-right:10px}
+@media screen and (max-width:768px){.panel-body .input-group-btn{display:block;position:relative;overflow:hidden;margin:20px auto 0 auto}.panel-body button{border-radius:5px;width:100%}}
+@media screen and (max-width:480px){.panel-primary{margin-top:30%}}
+#exampleModal {margin-top:10px;}
+</style> 
+
+ </head>
+ <body class="onIndex onHome"> 
+
+  
+    <style>
+              .download-btn-ctm{width:100%;text-align:center}.download-btn-ctm button{font-family:var(--font-body);font-size:15px;color:var(--body-bg-color);background-color:var(--link-bg-color);padding:11px 30px;border:none;outline:none;border-radius:4px;border-bottom:2px solid rgba(0,0,0,0.1);cursor:pointer}.download-btn-ctm button:hover{background:var(--link-color)}.download-btn-ctm button i{margin-right:10px}.download-btn-ctm button span{color:var(--link-color)}.download-btn-ctm button.timer{color:#000000!important;background:none;font-size:15px;padding:0;border-bottom:0;pointer-events:none}.download-btn-ctm button.timer i{display:none}@media screen and (max-width:500px){.btns-db{max-width:100%;margin:-20px 0;flex-direction:column}.btns-db a{width:100%;margin:5px 0;height:45px;line-height:45px;font-size:16px}.download-btn-ctm button{padding:9px 20px;font-size:16px}}.hide-content{display:none}.license-code,#idBlog{display:none!important}.safelink.button{outline:0;border:0;border-radius:5px;line-height:20px;color:#ffffff;background-color:#0088ff}.button-info{display:flex;flex-wrap:wrap;justify-content:center;margin:12px 0 0}.button-info>*{margin:0 12px 12px 0}.button-info>:last-child{margin-right:0}.button-info>*{flex-grow:1;justify-content:center}.button-info>:last-child{flex-grow:0;flex-shrink:0}.notifScroll{font-family:var(--font-body);font-size:2ppx;color:var(--body-color)}.areaNotif{padding:9px;box-shadow:0 0 3px 1px #0088ff;width:max-content;border-radius:10px;margin:0 auto}
+          </style> 
+   
+  
+  
+  
+  
+ 
+  
+  <div class="mainWrapper"> 
+   <div class="panel-primary"> 
+    <div class="panel-heading"> 
+     <h2>Shortener Converter</h2> 
+    </div> 
+    <div class="panel-body"> 
+     <input autocomplete="off" id="text" oninvalid="this.setCustomValidity('Please Enter valid link')" placeholder="Enter your link here..." required type="url"/> 
+     <span class="input-group-btn"> 
+      <button class="btn-primary" type="button" onclick='shorturl()' id="searchbtn">
+       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.865 5.1238C19.302 5.2768 19.594 5.6888 19.594 6.1518V12.9248C19.594 14.8178 18.906 16.6248 17.691 18.0248C17.08 18.7298 16.307 19.2788 15.486 19.7228L11.928 21.6448L8.364 19.7218C7.542 19.2778 6.768 18.7298 6.156 18.0238C4.94 16.6238 4.25 14.8158 4.25 12.9208V6.1518C4.25 5.6888 4.542 5.2768 4.979 5.1238L11.561 2.8108C11.795 2.7288 12.05 2.7288 12.283 2.8108L18.865 5.1238Z"></path>
+        <path class="svg-c" d="M9.32251 11.9177L11.2145 13.8107L15.1125 9.91269"></path>
+     </svg>Generate</button></span> 
+
+
+<div class="modal fade" id="exampleModal" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">      
+         <input id="result" onclick="this.focus();this.select()" readonly type="text"></input>      
+          <button type="button" class="copytoclipboard" onclick='copyurl("result")' data-toggle="popover" data-placement="bottom" data-content="Copied!">Copy URL</button>
+          <button type="button" class="btn-primary" data-dismiss="modal">Close</button>
+    </div>
+  </div>         
+      
+       
+     
+    </div> 
+   </div> 
+    
+    
+    
+  </div> 
+   </div>
+  </div> 
+
+<script>
+function shorturl() {
+  var x = document.getElementById("exampleModal");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+         
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha256-WqU1JavFxSAMcLP2WIOI+GB2zWmShMI82mTpLDcqFUg=" crossorigin="anonymous"></script>
+<script>
+let res
+  function shorturl() {
+    if(document.querySelector("#text").value==""){
+        alert("Url cannot be empty!")
+        return
+    }
+
+    document.getElementById("searchbtn").disabled=true;
+	document.getElementById("searchbtn").innerHTML='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Please wait...';
+    fetch(window.location.pathname, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: document.querySelector("#text").value })
+    }).then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    res = myJson;
+    document.getElementById("searchbtn").disabled=false;
+	document.getElementById("searchbtn").innerHTML=' Shorten it';
+    if(res.key!=="")
+    document.getElementById("result").value=window.location.href+res.key;
+    $('#exampleModal').modal('show')
+  }).catch(function(err){alert("Unknow error. Please retry!");
+  console.log(err);
+  document.getElementById("searchbtn").disabled=false;
+	document.getElementById("searchbtn").innerHTML=' Shorten it';})
+  }
+  function copyurl (id, attr) {
+    let target = null;
+
+    if (attr) {
+        target = document.createElement('div');
+        target.id = 'tempTarget';
+        target.style.opacity = '0';
+        if (id) {
+            let curNode = document.querySelector('#' + id);
+            target.innerText = curNode[attr];
+        } else {
+            target.innerText = attr;
+        }
+        document.body.appendChild(target);
+    } else {
+        target = document.querySelector('#' + id);
+    }
+
+    try {
+        let range = document.createRange();
+        range.selectNode(target);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        console.log('Copy success')
+    } catch (e) {
+        console.log('Copy error')
+    }
+
+    if (attr) {
+        // remove temp target
+        target.parentElement.removeChild(target);
+    }
+  }
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+
+</script>
+ </body>
+</html>
