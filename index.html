@@ -162,19 +162,8 @@ function shorturl() {
 }
 </script>
 
-<script type="text/javascript"> 
-    function shorturl() { 
-        var isurl = document.querySelector("#text").value; 
-        var pattern = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/; 
-        if (pattern.test(isurl)) { 
-            alert("Url is valid"); 
-            return true; 
-        }  
-            alert("Url is not valid!"); 
-            return false; 
- 
-    } 
-</script> 
+
+
 
 
          
@@ -184,10 +173,17 @@ function shorturl() {
 <script>
 let res
   function shorturl() {
-    if(document.querySelector("#text").value==""){
-        alert("Url cannot be empty!")
-        return
-    }
+
+    var urlku = document.getElementById("text").value;
+var validate_url = /^(http[s]?://){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/; 
+if (!validate_url.test(urlku)) {  
+    alert("url error"); 
+    return false; 
+} 
+else{ 
+    alert("url is valid"); 
+    return true; 
+} 
 
     document.getElementById("searchbtn").disabled=true;
 	document.getElementById("searchbtn").innerHTML='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Please wait...';
