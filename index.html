@@ -174,9 +174,9 @@ function shorturl() {
 let res
   function shorturl() {
 
-    var urlku = document.getElementById("text").value;
-var validate_url = /^(http[s]?://){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/; 
-if (!validate_url.test(urlku)) {  
+  var urlku = document.querySelector("#text").value;
+  var validate_url = /^(http[s]?://){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/; 
+  if (!validate_url.test(urlku)) {  
     alert("url error"); 
     return false; 
 } 
