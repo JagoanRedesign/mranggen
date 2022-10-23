@@ -167,11 +167,10 @@ function shorturl() {
 }
 
 function copyurl() {
-    var copyText = document.getElementById("result").value;
-    navigator.clipboard.writeText(copyText).then(() => {
-        document.getElementById('toastNotif').innerHTML = '<span>Copied to clipboard</span>';
-    });
-  }
+    var textBox = document.getElementById("result");
+    textBox.select();
+    document.execCommand("copy");
+}
 
 
 
