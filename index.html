@@ -167,11 +167,14 @@ function shorturl() {
 }
 
 function copyurl() {
-    var copyText = document.getElementById("copyurl").value;
+    var copyText = document.getElementById("result").value;
     navigator.clipboard.writeText(copyText).then(() => {
         document.getElementById('toastNotif').innerHTML = '<span>Copied to clipboard</span>';
     });
   }
+
+
+
 </script>
 
 
